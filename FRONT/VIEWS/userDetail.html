@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous">
+    <link rel="stylesheet" href="../ASSETS/CSS/style.css">
+    <title>Stream | SOUNDTOPIA</title>
+</head>
+<body>
+    <div class="container">
+
+        <header class="header">
+            <div class="header__wrapper">
+                <div class="header__column">
+                        <i class="fab fa-soundcloud"></i>
+                        <p>SOUNDTOPIA</p>   
+                </div>
+                <div class="header__column">
+                    <form action="./searchResult.html", method="GET">
+                        <input type="text" placeholder="Search by artists, tracks">
+                    </form>
+                </div>
+                <div class="header__column">
+                    <ul>
+                        <li><a href="./userDetail.html">My Page</a></li>
+                        <li><a href="./home.html">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+    
+        <main>
+            <section class="user__container">
+                <div class="user__rows user__header">
+                    <div class="user__photo-container">
+                        <img src="https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg" alt="user-background-photo" class="user__photo--back">
+                        <img src='http://i.pravatar.cc/500?img=7' alt="user-profile-photo" class="user__photo--front">
+                    </div>
+                    <h1 class="user__name">LOREM</h1>
+                    <h5 class="user__bio">Lorem ipsum dolor sit amet.</h1>
+                </div>
+                <div class="user__rows user__nav">
+                    <ul>
+                        <li class="user__edit"><a href="#">Profile</a></li>
+                        <li class="user__likedList"><a href="./like.html">Liked</a></li>
+                        <li class="user__following"><a href="./following.html">Following</a></li>
+                    </ul>
+                </div>
+                <div class="user__rows user__content">
+                    <!-- will use ajax -->
+                    <div class="user__form-container">
+                        <form action="#" method="POST">
+                            <div class="photo__upload">
+                                <input type="file" id="photo" name="photo" accept="image/*">
+                                <label for="photoUpload"></label>
+                                <div class="photo__upload__preview">
+                                    <div id="imgPreview"></div>
+                                </div>
+                            </div>
+                        
+                        <div class="user-info__container">
+                            <div class="user-info user-info--name">
+                                <h2 class="name">User Name</h2>
+                                <input type="text" placeholder="User Name" name="name">
+                            </div>
+                            <div class="user-info user-info--email">
+                                <h2 class="email">Email</h2>
+                                <input type="emial" placeholder="Email" name="email">
+                            </div>
+                            <div class="user-info user-info--bio">
+                                <h2 class="email">Bio</h2>
+                                <input type="text" placeholder="Tell the world a little bit about yourself." name="bio">        
+                            </div>
+                        </div>
+                        <div class="user__submit">
+                            <input type="submit" value="update">
+                        </div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    
+        <footer>
+                <div class="audio-player">
+                    <div class="audio-player__column">
+                        <div id="audio-player__btn--volume">
+                            <i class="fas fa-volume-down"></i>
+                        </div>
+                        <div id="audio-player__btn--play"><i class="fas fa-play"></i></div>
+                        <div id="audio-player__btn--repeat"><i class="fas fa-redo-alt"></i></div>
+                    </div>
+                    
+                    <div class="audio-player__column audio-player__wrapper">
+                        <span class="currentTime">0:00</span>
+        
+                        <audio id="audio">
+                            <!-- will be replaced data from DB -->
+                            <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
+                        </audio>
+        
+                        <div class="audio-player__controls">
+                            <progress id="progressBar" value="0" max="100"></progress>
+                        </div>
+        
+                        <span class="totalTime"></span>
+                    </div>
+                    
+                    <div class="audio-player__column">
+                        <img src="https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg" alt="" class="audio-player__album-cover">
+                        <div class="audio-player__info">
+                            <span class="audio-player__info--artist">lorem</span>
+                            <!-- artistDetail url will be taken :id(artist.id) -->
+                            <span class="audio-player__info--title"><a href="./artistDetail.html">Lorem, ipsum.</a></span>
+                        </div>
+                        <div id="audio-player__btn--like"><i class="fas fa-heart"></i></div>    
+                    </div>
+                    <div class="volume__controls">
+                        <progress id="volume-progressBar" value="10" max="100"></progress>
+                    </div>
+                </div> <!--audio-player-->
+            </footer>
+    </div>
+
+        <script type="text/javascript" src="../ASSETS/JS/audioPlayer.js"></script>
+</body>
+</html>

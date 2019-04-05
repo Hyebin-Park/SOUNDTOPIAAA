@@ -1,0 +1,42 @@
+
+
+    #carousel__container {
+        position: relative;
+        width: 70%;
+        margin: 0 auto;
+        height: auto;
+        overflow: hidden; 
+        transform: translateX(0) translateY(10vh);
+        
+        #carousel__wrapper{
+            display: flex;
+            flex-direction: row;
+            margin: 0 auto;
+            position: relative;
+            transition: all 0.4s ease-in-out;
+
+        
+            .carousel__element{
+                margin-right: 2rem;
+            }
+        }
+        
+    }
+    
+    .carousel__btn{
+        position: absolute;
+        font-size: 5rem;
+        z-index: 1;
+
+        &--back{
+            top: 50%;
+            left: 13%;
+        }
+
+        &--next{
+            top: 50%;
+            right: 13%;
+        }
+
+        
+    }

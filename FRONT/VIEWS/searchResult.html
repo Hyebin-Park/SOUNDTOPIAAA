@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous">
+    <link rel="stylesheet" href="../ASSETS/CSS/style.css">
+    <title>Stream | SOUNDTOPIA</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__wrapper">
+            <div class="header__column">
+
+                    <i class="fab fa-soundcloud"></i>
+                    <p>SOUNDTOPIA</p>   
+
+            </div>
+            <div class="header__column">
+                <form action="./searchResult.html", method="GET">
+                    <input type="text" placeholder="Search by artists, tracks">
+                </form>
+            </div>
+            <div class="header__column">
+                <ul>
+                    <li><a href="./userDetail.html">My Page</a></li>
+                    <li><a href="./home.html">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="search__header">
+            <!-- will be replaced data from DB in js -->
+            <h1>Search results for "Lorem"</h1>     
+        </div>
+        <nav class="search__nav">
+            <ul>
+                <li class="search__nav--artist">Artist</li>
+                <li class="search__nav--tracks">Tracks</li>
+            </ul>
+        </nav>
+        <section class="search__result"></section>
+    </main>
+
+    <footer>
+            <div class="audio-player">
+                <div class="audio-player__column">
+                    <div id="audio-player__btn--volume"><i class="fas fa-volume-down"></i></div>
+                    <div id="audio-player__btn--play"><i class="fas fa-play"></i></div>
+                    <div id="audio-player__btn--repeat"><i class="fas fa-redo-alt"></i></div>
+                </div>
+                
+                <div class="audio-player__column audio-player__wrapper">
+                    <span class="currentTime">0:00</span>
+    
+                    <audio id="audio">
+                        <!-- will be replaced data from DB -->
+                        <source src="http://www.lukeduncan.me/oslo.mp3" type="audio/mp3">
+                    </audio>
+    
+                    <div class="audio-player__controls">
+                        <progress id="progressBar" value="0" max="100"></progress>
+                    </div>
+    
+                    <span class="totalTime"></span>
+                </div>
+                
+                <div class="audio-player__column">
+                    <img src="https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg" alt="" class="audio-player__album-cover">
+                    <div class="audio-player__info">
+                        <span class="audio-player__info--artist">lorem</span>
+                        <!-- artistDetail url will be taken :id(artist.id) -->
+                        <span class="audio-player__info--title"><a href="./artistDetail.html">Lorem, ipsum.</a></span>
+                    </div>
+                    <div id="audio-player__btn--like"><i class="fas fa-heart"></i></div>    
+                </div>
+            </div> <!--audio-player-->
+        </footer>
+
+        <script type="text/javascript" src="../ASSETS/JS/audioPlayer.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+.user__content {
+    position: absolute;
+    width: 100%;
+    height: 15rem;
+    top: 45%;
+    
+
+    .photo__upload{
+        position: absolute;
+        top:0;
+        left: 5rem;
+
+        input {
+            display: none;
+        }
+
+        label {
+            border-radius: 100%;
+            display: inline-block;
+            z-index: 6;
+            position: absolute;
+            top: 1rem;
+            left: 11rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: white;
+            border: 1px solid transparent;
+            box-shadow: 0 .2rem .4rem  rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+
+            &:hover {
+                background: #f1f1f1;
+                border-color: #d6d6d6;
+            }
+            
+        }
+
+        .photo__upload__preview {
+            background: black;
+            z-index: 5;
+            width: 15rem;
+            height: 15rem;
+            position: relative;
+            border-radius: 100%;
+            border: .6rem solid #F8F8F8;
+            box-shadow: 0 .2rem .4rem  rgba(0, 0, 0, 0.12);
+        }
+    }
+
+    .user-info__container {
+        position: absolute;
+        left: 30%;
+
+        .user-info {
+            
+            display: block;
+            margin-bottom: 2rem;
+            
+
+            &:not(:nth-child(1)){
+                float: left;
+            }
+
+            &:last-child{
+                position: relative;
+                bottom: 7.5rem;
+                left: 3rem;
+
+                input {
+                    width: 30rem;
+                    height: 10.5rem;
+                    position: relative;
+
+                    ::placeholder{
+                        position: absolute;
+                        top: 0;
+                    }
+                }
+            }
+        }
+        
+        h2{
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        input {
+            padding-left: 1rem; 
+            width: 15rem;
+            height: 3rem;
+            border-radius: .5rem;
+            border: .05rem solid lighten( #333333, 60% );
+
+        }
+
+    }
+    .user__submit{
+        position: absolute;
+        top:90%;
+        left: 86%;
+
+        input {
+            color: black;
+            width: 5rem;
+            height: 3rem;
+            border-radius: .5rem;
+            box-shadow: 0 .2rem .4rem  rgba(0, 0, 0, 0.12);
+        }
+    }
+} 

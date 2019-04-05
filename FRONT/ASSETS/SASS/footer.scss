@@ -1,0 +1,130 @@
+.audio-player {
+    position: fixed;
+    bottom: 0;
+    background-color: #F2F2F2;
+    box-shadow: .09rem 0 .1rem rgba(#333333, .3);
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: #333333;
+
+//     .audio-player:hover .volume__controls{
+    
+//         visibility: visible;
+    
+//    }
+    .volume__controls{
+        // visibility: hidden;
+        position: absolute;
+        left: 3.8rem;
+        bottom: 7rem;
+        z-index: 5;
+        transform: rotate(-90deg);
+        transition: height .2s cubic-bezier(0.17, 0.72, 0.26, 1.23);
+        background:#F2F2F2;
+        height: 4rem;
+        width: 13rem;
+        z-index: 66;
+
+            #volume-progressBar{
+                -webkit-appearance: none;
+                appearance: none;
+                position: relative;
+                left: 1rem;
+                top: 1.6rem;
+    
+                &::-webkit-progress-bar {
+                    background-color: grey;
+                    border-radius: .5rem;
+                    height: .5rem;
+                }
+    
+                &::-webkit-progress-value {
+                    background-color: #1C5542;
+                }
+            }
+        
+
+    }
+    &__column {
+        width: 100%;
+        
+        &>* {
+            position: relative;
+            display:block;
+            
+            float:left;
+            // transform: translateY(80%)
+            top: .9rem;
+        }
+        
+    
+        &:nth-child(1) *{
+            position: relative;
+            left: 5rem;
+
+            &:not(:last-child){
+                margin-right: 3rem;
+            }
+            
+        }
+
+
+        &:nth-child(2) {
+            position: relative;
+            right: 5rem;
+            width: 100%;
+
+            progress {
+                width: 16rem;
+                -webkit-appearance: none;
+                appearance: none;
+                background-color: white;
+                height: 5px;
+                color: #1C5542;
+
+                &::-webkit-progress-bar {
+                    background-color: white;
+                    border-radius: 2px;
+                    border: 1px solid darken(#F2F2F2, 15%);
+                    color: #1C5542;
+                }
+
+                &::-webkit-progress-value {
+                    background-color: #1C5542;
+                }
+            }
+            &:nth-child(2) *{
+                &:not(:last-child){
+                    margin-right: 1rem;
+                }
+                
+            }
+        }
+        &:nth-child(3) {
+
+            .audio-player__info{
+                position: relative;
+                top:.5rem;
+            }
+            
+            & *{
+                 display: block;
+     
+                 &:not(:last-child){
+                     margin-right: 3rem;
+                 }
+                 
+             }
+             &>img {
+                 transform: translateY(-30%);
+                 width: 3rem;
+                 height: 3rem;
+             }
+        }
+        
+
+
+    }
+}

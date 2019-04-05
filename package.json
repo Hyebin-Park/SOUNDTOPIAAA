@@ -1,0 +1,23 @@
+{
+  "name": "sound_topia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "compile:sass": "node-sass FRONT/ASSETS/SASS/main.scss FRONT/ASSETS/CSS/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hyebin-Park/SOUNDTOPIAAA.git"
+  },
+  "author": "Park Hyebin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hyebin-Park/SOUNDTOPIAAA/issues"
+  },
+  "homepage": "https://github.com/Hyebin-Park/SOUNDTOPIAAA#readme"
+}
