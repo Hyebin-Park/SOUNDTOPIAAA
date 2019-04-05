@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous">
-    <link rel="stylesheet" href="../ASSETS/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="../ASSETS/CSS/style.css">
     <title>Stream | SOUNDTOPIA</title>
 </head>
 <body>
@@ -18,20 +18,20 @@
                         <p>SOUNDTOPIA</p>   
                 </div>
                 <div class="header__column">
-                    <form action="./searchResult.html", method="GET">
-                        <input type="text" placeholder="Search by artists, tracks">
+                    <form action="/search", method="GET">
+                        <input type="text" placeholder="Search by artists, tracks" name="search"> 
                     </form>
                 </div>
                 <div class="header__column">
                     <ul>
-                        <li><a href="./userDetail.html">My Page</a></li>
-                        <li><a href="./home.html">Sign out</a></li>
+                        <li><a href="#" id="goToUserDetail">My Page</a></li>
+                        <li><a href="/sign-out">Sign out</a></li>
                     </ul>
                 </div>
             </div>
         </header>
     
-        <main>
+        <main id="main">
             <section class="user__container">
                 <div class="user__rows user__header">
                     <div class="user__photo-container">
@@ -42,44 +42,15 @@
                     <h5 class="user__bio">Lorem ipsum dolor sit amet.</h1>
                 </div>
                 <div class="user__rows user__nav">
-                    <ul>
+                    <ul id="user__nav">
                         <li class="user__edit"><a href="#">Profile</a></li>
-                        <li class="user__likedList"><a href="./like.html">Liked</a></li>
-                        <li class="user__following"><a href="./following.html">Following</a></li>
+                        <li class="user__likedList"><a href="/myPage/likes">Liked</a></li>
+                        <li class="user__following"><a href="/myPage/following">Following</a></li>
                     </ul>
                 </div>
                 <div class="user__rows user__content">
                     <!-- will use ajax -->
-                    <div class="user__form-container">
-                        <form action="#" method="POST">
-                            <div class="photo__upload">
-                                <input type="file" id="photo" name="photo" accept="image/*">
-                                <label for="photoUpload"></label>
-                                <div class="photo__upload__preview">
-                                    <div id="imgPreview"></div>
-                                </div>
-                            </div>
-                        
-                        <div class="user-info__container">
-                            <div class="user-info user-info--name">
-                                <h2 class="name">User Name</h2>
-                                <input type="text" placeholder="User Name" name="name">
-                            </div>
-                            <div class="user-info user-info--email">
-                                <h2 class="email">Email</h2>
-                                <input type="emial" placeholder="Email" name="email">
-                            </div>
-                            <div class="user-info user-info--bio">
-                                <h2 class="email">Bio</h2>
-                                <input type="text" placeholder="Tell the world a little bit about yourself." name="bio">        
-                            </div>
-                        </div>
-                        <div class="user__submit">
-                            <input type="submit" value="update">
-                        </div>
-                        
-                        </form>
-                    </div>
+                    <p>hello</p>
                 </div>
             </section>
         </main>
@@ -126,5 +97,6 @@
     </div>
 
         <script type="text/javascript" src="../ASSETS/JS/audioPlayer.js"></script>
+        <script type="text/javascript" src="../ASSETS/JS/realTime.js"></script>
 </body>
 </html>

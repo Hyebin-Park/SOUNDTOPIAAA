@@ -19,20 +19,20 @@
                                 <p>SOUNDTOPIA</p>   
                         </div>
                         <div class="header__column">
-                            <form action="./searchResult.html", method="GET">
-                                <input type="text" placeholder="Search by artists, tracks">
+                            <form action="/search", method="GET">
+                                <input type="text" placeholder="Search by artists, tracks" name="search">
                             </form>
                         </div>
                         <div class="header__column">
                             <ul>
-                                <li><a href="./userDetail.html">My Page</a></li>
-                                <li><a href="./home.html">Sign out</a></li>
+                                <li><a href="#" id="goToUserDetail">My Page</a></li>
+                                <li><a href="/sign-out">Sign out</a></li>
                             </ul>
                         </div>
                     </div>
                 </header>
             
-                <main>
+                <main id="main">
                         <div class="carousel__btn carousel__btn--back"><i class="fas fa-chevron-circle-left"></i></div>
                         <div class="carousel__btn carousel__btn--next"><i class="fas fa-chevron-circle-right"></i></div>        
                         <div id="carousel__container">
@@ -164,7 +164,8 @@
             </div>
    
 
-        <script type="text/javascript" src="../ASSETS/JS/audioPlayer.js"></script>
-        <script type="text/javascript" src="../ASSETS/JS/carousel.js"></script>
+        <script type="text/javascript" src="ASSETS/JS/audioPlayer.js"></script>
+        <script type="text/javascript" src="ASSETS/JS/carousel.js"></script>
+        <script type="text/javascript" src="ASSETS/JS/realTime.js"></script>
 </body>
 </html>
