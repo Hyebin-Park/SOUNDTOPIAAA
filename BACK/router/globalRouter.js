@@ -1,5 +1,7 @@
 import express from "express";
 import routes from "../routes";
+import Track from "../models/Track";
+import { makeDB, mockData } from "../mockData";
 import app from "../../app";
 
 
@@ -17,6 +19,7 @@ globalRouter.get(routes.search, (req, res) => {
 })
 
 globalRouter.get(routes.main, (req, res) => {
+    // makeDB(mockData);
     res.sendfile("FRONT/views/main.html");
 })
 
