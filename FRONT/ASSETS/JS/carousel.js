@@ -14,6 +14,7 @@ console.log(elemMarginRight)
 
 let offset = 0;
 let direction;
+let count = 1;
 
 
 
@@ -58,18 +59,21 @@ const backToFirstLength = () => {
 }
 
 const moveFoward = () => {  
-    const maxX = carouselContainerWidth + offset
+    const maxX = elems.length;
     let carouselStyle = carousel.style;
-    if(maxX > 0){
+
+    // (function(){
+        // if(maxX-3 > count){
+            offset -= Number(elem.offsetWidth)
+            console.log(offset, carouselContainerWidth)
+            direction = 'foward';
+            carouselStyle.transform = `translateX(${offset}px)`
+            console.log(count, maxX)
+            // count++;
+        // }
+    // }())
         
-        offset -= Number(elem.offsetWidth) + Number(elemMarginRight);
-        console.log(offset, carouselContainerWidth)
-        direction = 'foward';
-        // offset -= Number(carouselContainerWidth) + Number(elemMarginRight); 
-        // console.log(offset)
-        carouselStyle.transform = `translateX(${offset}px)`
-        
-    }
+
 
     
 }

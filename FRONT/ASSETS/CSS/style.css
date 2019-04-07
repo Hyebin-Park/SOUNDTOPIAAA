@@ -1,104 +1,33 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  box-sizing: border-box;
-  vertical-align: baseline; }
+#carousel__container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+  overflow: hidden;
+  transform: translateX(0) translateY(10vh); }
+  #carousel__container #carousel__wrapper {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.47, 0, 0.745, 0.715); }
+    #carousel__container #carousel__wrapper .carousel__element {
+      margin-right: 2rem; }
+      #carousel__container #carousel__wrapper .carousel__element img {
+        width: 10rem;
+        height: 10rem; }
 
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block; }
+.carousel__btn {
+  position: absolute;
+  font-size: 5rem;
+  z-index: 1; }
+  .carousel__btn--back {
+    top: 50%;
+    left: 13%; }
+  .carousel__btn--next {
+    top: 50%;
+    right: 13%; }
+lay: block; }
 
 body {
   line-height: 1; }
@@ -284,7 +213,7 @@ main {
 
 #carousel__container {
   position: relative;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   height: auto;
   overflow: hidden;
@@ -294,9 +223,12 @@ main {
     flex-direction: row;
     margin: 0 auto;
     position: relative;
-    transition: all 0.4s ease-in-out; }
+    transition: all 0.5s cubic-bezier(0.47, 0, 0.745, 0.715); }
     #carousel__container #carousel__wrapper .carousel__element {
       margin-right: 2rem; }
+      #carousel__container #carousel__wrapper .carousel__element img {
+        width: 10rem;
+        height: 10rem; }
 
 .carousel__btn {
   position: absolute;
@@ -446,13 +378,13 @@ main {
         position: relative;
         bottom: 7.5rem;
         left: 3rem; }
-        .user__content .user-info__container .user-info:last-child input {
-          width: 30rem;
-          height: 10.5rem;
-          position: relative; }
-          .user__content .user-info__container .user-info:last-child input ::placeholder {
-            position: absolute;
-            top: 0; }
+      .user__content .user-info__container .user-info:last-child input {
+        width: 30rem;
+        height: 10.5rem;
+        position: relative; }
+        .user__content .user-info__container .user-info:last-child input ::placeholder {
+          position: absolute;
+          top: 0; }
     .user__content .user-info__container h2 {
       font-size: 1rem;
       text-transform: uppercase;

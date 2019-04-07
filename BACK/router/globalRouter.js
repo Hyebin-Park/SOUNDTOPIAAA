@@ -1,6 +1,8 @@
 import express from "express";
 import routes from "../routes";
 import Track from "../models/Track";
+import User from "../models/User";
+import CP from "../models/currentPlay";
 import { makeDB, mockData } from "../mockData";
 import app from "../../app";
 
@@ -14,21 +16,50 @@ globalRouter.get(routes.search, (req, res) => {
     const {
         query: { search }
     } = req;
-    res.sendfile("FRONT/views/searchResult.html")
-    res.send(search);
+    console.log(search)
+    res.render("searchResult", { search })
+
 })
 
-globalRouter.get(routes.main, (req, res) => {
-    // makeDB(mockData);
-    res.sendfile("FRONT/views/main.html");
+globalRouter.get(routes.main, async (req, res) => {
+    try{
+        const tracks = await Track.find({});
+        const cp = await CP.find({}).populate("currentPlay");
+        console.log(cp)
+        res.render("main", { tracks, cp });
+    } catch(error){
+        console.log(error)
+    }
 })
 
 globalRouter.get(routes.myPage, (req, res) => {
-    res.sendfile("FRONT/views/userDetail.html");
+    res.render("userDetail")
 })
 
 globalRouter.get(routes.signOut, (req, res) => {
     res.redirect(routes.home)
 })
+
+globalRouter.get(routes.songApi(), async (req, res) => {
+    const {
+        params : { id }
+    } = req;
+
+    try{
+        const selectedTrack = await Track.findById(id)
+
+        await CP.remove({})
+        const cp = await new CP({
+            currentPlay: selectedTrack.id
+        })
+        cp.save();
+        res.redirect(routes.main)
+    } catch(error){
+        console.log(error)
+    }finally {
+        res.end();
+    }
+})
+
 
 export default globalRouter;

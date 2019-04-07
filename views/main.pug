@@ -1,0 +1,17 @@
+extends layout/base
+
+block content
+    main#main
+        .carousel__btn.carousel__btn--back
+            i.fas.fa-chevron-circle-left
+        .carousel__btn.carousel__btn--next
+            i.fas.fa-chevron-circle-right
+        #carousel__container
+            #carousel__wrapper
+                each track in tracks
+                    .carousel__element
+                        a.playMain(href=`${routes.songApi(track.id)}`)
+                            i.fas.fa-play
+                        img(src=track.imgUrl, alt="")
+                        h3.carousel__element__artist=`${track.artist}`
+                        h5.carousel__element__title=`${track.title}`

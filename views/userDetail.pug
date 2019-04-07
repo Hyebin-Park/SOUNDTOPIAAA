@@ -1,0 +1,29 @@
+extends layout/base
+
+block content
+    main#main
+        section.user__container
+            .user__rows.user__header
+                .user__photo-container
+                    //- user db만들면 교체할 내용
+                    img.user__photo--back(src="https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg")
+                    img.user__photo--front(src="http://i.pravatar.cc/500?img=7")
+                h1.user__name LOREM
+                H5.user__bio Lorem ipsum dolor sit amet.
+            .user__rows.user__nav
+                ul#user__nav
+                    li.user__edit
+                        a(href=routes.editProfile) Profile
+                    li.user__likedList
+                        a(href=routes.likes) Liked
+                    li.user__following
+                        a(href=routes.following) Following
+            .user__rows.user__content
+                p later, i'm gonna link this with user.likes
+                if what === "following"
+                    include ./following
+                if what === "profile"
+                    include ./editProfile
+
+                
+                    

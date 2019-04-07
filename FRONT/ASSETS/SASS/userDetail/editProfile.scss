@@ -66,15 +66,15 @@
                 bottom: 7.5rem;
                 left: 3rem;
 
-                input {
-                    width: 30rem;
-                    height: 10.5rem;
-                    position: relative;
+            }
+            &:last-child input {
+                width: 30rem;
+                height: 10.5rem;
+                position: relative;
 
-                    ::placeholder{
-                        position: absolute;
-                        top: 0;
-                    }
+                ::placeholder{
+                    position: absolute;
+                    top: 0;
                 }
             }
         }

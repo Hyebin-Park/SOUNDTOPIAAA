@@ -1,18 +1,22 @@
 import express from "express";
 import routes from "../routes";
-// import routes from "..routes"
 
-const myPageRouter = express.Router();
+
+
+export const myPageRouter = express.Router();
+
 
 myPageRouter.get(routes.editProfile, (req, res) => {
-    res.sendfile("FRONT/views/editProfile.html")
+    const what = "profile"
+    express.static("FRONT")
+    res.render("userDetail", {what})
 })
+
 myPageRouter.get(routes.like, (req, res) => {
-    res.sendfile("FRONT/views/like.html")
+    res.render("userDetail")
 })
 
 myPageRouter.get(routes.following, (req, res) => {
-    res.sendfile("FRONT/views/following.html")
+    const what = "following"
+    res.render("userDetail", {what})
 })
-
-export default myPageRouter;

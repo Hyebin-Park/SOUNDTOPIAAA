@@ -1,0 +1,20 @@
+.user__form-container
+    form(action=routes.editProfile, method="post")
+        .photo__upload
+            input(type="file", id="photo", name="photo", accept="image/*")
+            label(for="photoUpload")
+            .photo__upload__preview
+                #imgPreview
+    .user-info__container
+        .user-info.user-info--name
+            h2.name User Name
+            input(type="text", placeholder="User Name", name="name")
+        .user-info.user-info--emial
+            h2.name Email
+            input(type="emial", placeholder="Email", name="email")
+        .user-info.user-info--name
+            h2.name Bio
+            input(type="text", placeholder="Tell the world a little bit about yourself.", name="bio")
+        .user__submit
+            input(type="submit", value="update")
+        

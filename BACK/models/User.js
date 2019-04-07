@@ -15,7 +15,13 @@ const UserSchema = mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Artist"
         }
-    ]
+    ],
+    currentPlay: 
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Track"
+        }   
+    
 });
 
 const model = mongoose.model("User", UserSchema);

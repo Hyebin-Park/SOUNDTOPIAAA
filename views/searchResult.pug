@@ -1,0 +1,12 @@
+extends layout/base
+
+block content
+    main#main
+        .search__header
+        //- will be replaced data from DB
+        h1 Search results for "#{search}"
+        nav.search__nav
+            ul
+                li.search__nav--artist Artist
+                li.search__nav--tracks Tracks
+        section.search__result

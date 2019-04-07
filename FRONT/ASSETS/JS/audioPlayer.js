@@ -1,3 +1,5 @@
+
+
 const playBtn = document.getElementById("audio-player__btn--play"),
       volumeBtn = document.getElementById("audio-player__btn--volume"),
       repeatBtn = document.getElementById("audio-player__btn--repeat"),
@@ -5,10 +7,13 @@ const playBtn = document.getElementById("audio-player__btn--play"),
       audio = document.getElementById("audio"),
       progressBar = document.getElementById("progressBar"),
       currentTime = document.querySelector(".currentTime"),
-      totalTime = document.querySelector(".totalTime");
+      totalTime = document.querySelector(".totalTime"),
+      playMain = document.querySelectorAll(".playMain")
 
 let seeking = false,
     seekingV = false;
+
+
 
 
 const formatTime = (seconds) => {
@@ -134,7 +139,21 @@ const handleRepeat = () => {
     audio.currentTime = 0;
 }
 
+
+const handelMainPlay = async (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget.href)
+    const response = await fetch(`${e.currentTarget.href}`, {method: "GET"})
+    console.log(response)
+
+}
+
 const init = () => {
+    
+    for(const btn of playMain){
+        console.log(btn)
+        btn.addEventListener("click", handelMainPlay)
+    }
 
     console.log(playBtn)
     playBtn.addEventListener("click", handlePlayClick)
@@ -154,6 +173,7 @@ const init = () => {
     volumeBtn.addEventListener("click", handleVolumeClick);
 
     repeatBtn.addEventListener("click", handleRepeat);
+
 }
 
 

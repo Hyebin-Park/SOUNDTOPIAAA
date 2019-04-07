@@ -17,6 +17,8 @@ const FOLLOWING = "/following";
 // artists and songs
 const ARTIST = "/:name";
 
+const SONG_API = "/api/:id/song"
+
 // user authentication
 
 const routes = {
@@ -29,7 +31,14 @@ const routes = {
     editProfile: EDIT_PROFILE,
     like: LIKE,
     following: FOLLOWING,
-    artist: ARTIST 
+    artist: ARTIST,
+    songApi: id => {
+        if(id) {
+            return `/api/${id}/song`
+        } else {
+            return SONG_API
+        }
+    }
 
 };
 
