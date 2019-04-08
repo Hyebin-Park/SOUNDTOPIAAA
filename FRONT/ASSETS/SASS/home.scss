@@ -1,0 +1,255 @@
+.home-header {
+    display: block;
+    position: relative;
+    width: 80rem;
+    height: 30rem;
+    margin: 0 auto;
+    background-blend-mode: soft-light;
+    background-image: linear-gradient(to right bottom, #f65368, #a1bffd),
+            url("../../MEDIA/adult-architecture-bandana-1371177.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+
+    .header__logo {
+        // background: white;
+        margin: .5rem 0 0 1.5rem;
+        display: inline-block;
+        position: relative;
+        color: white;
+        
+        .logo--img{
+            transform: translateY(15%);
+            font-size: 2rem;
+            
+        }
+        .logo--title{   
+            margin-left: .7rem;
+            font-weight: 550;
+            font-size: 1.2rem;
+   
+        }
+    }
+
+    
+      @mixin homeHeaderContent($value1, $value2, $value3, $value4, $value5, $value6, $value7){
+
+          position: $value1;
+          top: $value2;
+          color: $value3; 
+          display: $value4; 
+          justify-content: $value5; 
+          font-size: $value6; 
+          font-weight: $value7;
+      }
+    .header__content {
+        position: relative;
+        top: 30%;
+        color: white;
+        
+        
+        &--title{
+            display: flex;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 300; 
+            
+        }
+
+        &--description{
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 500;
+            display: block;
+            text-align: center;
+
+            p{
+                margin-top: 0.5rem;
+            }
+        }
+    }
+
+    .header__signUpBtn{
+        position: absolute;
+        z-index: 1;
+        top: 21rem;
+        left: 42%;
+        width: 12rem;
+        height: 3rem;
+        background: #f65368;
+        border:none;
+        border-radius: 1.3rem; 
+        color: white;
+        font-size: 1rem;
+        box-shadow: 0 .5rem 1rem rgba(black, .2);
+        cursor: pointer;
+        
+    }
+
+    .header__line {
+        position: absolute;
+        top: 0;
+        background: #f65368;
+        width: 100%;
+        height: .3rem;
+    }
+
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+
+    
+    .modal__container {
+        z-index: 3;
+        transition: .5s ease-in-out;
+        opacity: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 0;
+        width: 25rem;
+        height: 40rem;
+        background: darken(grey, 20%);
+        border-radius: .3rem;
+
+        .modal__header{
+            z-index: 6;
+            position: relative;
+            width: 100%;
+            
+            .modal__header--closeBtn{
+                position: absolute;
+                top: -2rem;
+                right: 0;
+                font-size: 2rem;
+                color: darken(grey, 20%);
+                transition: transform .2s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+                &:hover {
+                    transform: rotate(90deg);
+                }
+            }
+
+            li{
+                position: relative;
+                float: left;
+                text-align: center;
+                width: 50%;
+                height: 50px;
+                font-size: 1rem;
+                font-weight: bolder;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #f65368;
+                cursor: pointer;
+
+
+                
+                a{
+                    z-index: 10;
+                    color: darken(grey, 20%);
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    display: block;
+                    position: relative;
+                }
+
+            }
+           
+            // 자바스크립트에서 동적으로 추가할 클래스
+            .in-active{
+                border-radius: .3rem 0 0 0;
+                background: darken(grey, 20%);
+                a{
+                    color: #f65368;
+                }
+            }
+            .up-active{
+                border-radius: 0 .3rem 0 0;
+                background: darken(grey, 20%);
+                a{
+                    color: #f65368;
+                }
+                
+            }
+        }
+        
+        .modal__content {
+            position: relative;            
+            width: 100%;
+            height: 100%;
+            
+            form {
+                text-align: center;
+                position: absolute;
+                top: 13%;
+                left: 10%;
+
+                & * {
+                    display: block;
+                }
+
+                input,
+                .social-login {
+                    padding: .5rem;
+                    color: darken(grey, 20%);
+                    font-size: 1.1rem;
+                    margin: 0 auto;
+                    width: 20rem;
+                    height: 3rem;
+                    background: lighten(grey, 40%);
+                }
+
+                #submit,
+                .social-login{
+                    background: #f65368;
+                    margin-top: 20px;
+                    font-weight: 600;
+                    
+                }
+
+                .social-login {
+                    background: lighten(#0c0c0c, 5%);
+                }
+            }
+
+            // #modal-sign-in {
+            //     visibility: hidden;
+            // }
+            #modal-sign-up {
+                visibility: hidden;               
+            }
+
+            label{
+                
+                font-weight: 600;
+                font-size: 1.3rem;
+                color: #FB5781;
+                margin-bottom: 1rem;
+
+                &:not(:first-child){
+                    margin-top: 1rem;
+                }
+               
+            }
+
+        }
+    }
+
+    .open {
+        opacity: 1;
+        top: 5rem;
+    }
+    .close {
+        opacity: 0;
+        top: 0;
+    }
+}

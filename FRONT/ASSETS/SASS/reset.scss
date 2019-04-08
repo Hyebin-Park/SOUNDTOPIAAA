@@ -132,7 +132,7 @@ input {
   box-sizing: inherit;
 }
 
-input {
+input,button {
     border: none;
     box-sizing: inherit;
     &:focus,

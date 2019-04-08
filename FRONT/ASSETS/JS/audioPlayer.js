@@ -1,17 +1,18 @@
 
+let playBtn = document.getElementById("audio-player__btn--play"),
+        volumeBtn = document.getElementById("audio-player__btn--volume"),
+        repeatBtn = document.getElementById("audio-player__btn--repeat"),
+        volumeProgressBar = document.getElementById("volume-progressBar"),
+        audio = document.getElementById("audio"),
+        progressBar = document.getElementById("progressBar"),
+        currentTime = document.querySelector(".currentTime"),
+        totalTime = document.querySelector(".totalTime"),
+        playMain = document.querySelectorAll(".playMain"),
+        footer = document.getElementsByTagName("footer"),
+        seeking = false,
+        seekingV = false;
 
-const playBtn = document.getElementById("audio-player__btn--play"),
-      volumeBtn = document.getElementById("audio-player__btn--volume"),
-      repeatBtn = document.getElementById("audio-player__btn--repeat"),
-      volumeProgressBar = document.getElementById("volume-progressBar"),
-      audio = document.getElementById("audio"),
-      progressBar = document.getElementById("progressBar"),
-      currentTime = document.querySelector(".currentTime"),
-      totalTime = document.querySelector(".totalTime"),
-      playMain = document.querySelectorAll(".playMain")
 
-let seeking = false,
-    seekingV = false;
 
 
 
@@ -48,8 +49,9 @@ const handlePlayClick = () => {
 }
 
 const updateProgressBar = (e) => {
-    console.log(e)
-    const percentage = (audio.currentTime * 100) / audio.duration;
+    console.log(audio.currentTime, audio.duration)
+    const percentage = Math.floor((audio.currentTime * 100) / audio.duration);
+    console.log(percentage)
     // Update the progress bar's value
     progressBar.value = percentage;
     currentTime.innerHTML = formatTime(audio.currentTime);
@@ -143,15 +145,46 @@ const handleRepeat = () => {
 const handelMainPlay = async (e) => {
     e.preventDefault();
     console.log(e.currentTarget.href)
-    const response = await fetch(`${e.currentTarget.href}`, {method: "GET"})
-    console.log(response)
+    await fetch(`${e.currentTarget.href}`, {method: "GET"})
+        .then( async (res) => {
+            console.log(`${res.url}`)
+           return await fetch(`${res.url}`, {method: "GET"})
+        }).then(res2 => {
+            console.log(res2)
+            return res2.text()
+        }).then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            footer[0].innerHTML = doc.getElementsByTagName("footer")[0].innerHTML
+            console.log(footer[0])
+
+            playBtn = document.getElementById("audio-player__btn--play"),
+            volumeBtn = document.getElementById("audio-player__btn--volume"),
+            repeatBtn = document.getElementById("audio-player__btn--repeat"),
+            volumeProgressBar = document.getElementById("volume-progressBar"),
+            audio = document.getElementById("audio"),
+            progressBar = document.getElementById("progressBar"),
+            currentTime = document.querySelector(".currentTime"),
+            totalTime = document.querySelector(".totalTime"),
+            seeking = false,
+            seekingV = false;
+
+            audio.load()
+            init();
+            console.log(audio)
+        })
+    // console.log(response.url)
+
+    // fetchHtml()
+
+
+
 
 }
 
 const init = () => {
     
     for(const btn of playMain){
-        console.log(btn)
         btn.addEventListener("click", handelMainPlay)
     }
 
@@ -159,8 +192,10 @@ const init = () => {
     playBtn.addEventListener("click", handlePlayClick)
     audio.addEventListener('timeupdate', updateProgressBar, false);
     audio.addEventListener('loadedmetadata', () => {
+        console.log(audio.duration)
             totalTime.innerHTML = formatTime(audio.duration);
-            updateVProgressBar();
+            console.log(totalTime)
+            // updateVProgressBar();
     })
     progressBar.addEventListener('mousedown', handlerBar, false);
     progressBar.addEventListener('mousemove', seek, false);

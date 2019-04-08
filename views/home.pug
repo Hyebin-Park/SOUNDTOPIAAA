@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.7.2/css/all.css", integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr", crossorigin="anonymous")
+        link(rel="stylesheet", href="ASSETS/CSS/style.css")
+        title Soundtopia
+    body
+        .container
+            header.home-header
+                .header__logo 
+                    i.fab.fa-soundcloud.logo--img
+                    span.logo--title SOUNDTOPIA
+                .header__content
+                    h1.header__content--title Connect on SoundTopia
+                    .header__content--description 
+                        p Discover, stream a constantly expanding mix of music 
+                        p from emerging and major artists around the world
+                button.header__signUpBtn Sign up for free
+                .header__line
+            section.modal
+                .modal__container
+                    .modal__header
+                        i.fas.fa-times.modal__header--closeBtn
+                        ul
+                            li#sign-in
+                                a Sign In
+                            li#sign-up
+                                a Create Account
+                    .modal__content
+                        form(action=routes.signIn, id="modal-sign-in", method="POST")
+                            label(for='email' required) Email Address
+                            input(type="email", name="email", required)
+                            label(for='password' required) Password
+                            input(type="password", name="password", required)
+                            input#submit(type="submit", value="Sign-in")
+                            button.social-login Continue With Google
+                        form(action=routes.signUp, id="modal-sign-up", method="POST")
+                            label(for='name' required) User Name
+                            input(type="text", name="name", required)
+                            label(for='email' required) Email Address
+                            input(type="email", name="email", required)
+                            label(for='password' required) Password
+                            input(type="password", name="password", required)
+                            label(for='password' required) Verify Password
+                            input(type="password", name="password2", required)
+                            input#submit(type="submit", value="Join Now")
+                            button.social-login Continue With Google
+        script(type="text/javascript", src="ASSETS/JS/modal.js")

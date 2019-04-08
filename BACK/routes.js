@@ -5,6 +5,8 @@ const HOME = "/";
 const MAIN = "/main";
 const SEARCH = "/search"
 const MYPAGE = "/mypage";
+const SIGNIN = "/sign-in";
+const SIGNUP = "/sign-up";
 const SIGNOUT = "/sign-out";
 // const USERS = "/users";
 
@@ -25,6 +27,8 @@ const routes = {
     home: HOME,
     main: MAIN,
     search: SEARCH,
+    signIn: SIGNIN,
+    signUp: SIGNUP,
     signOut: SIGNOUT,
     // users: USERS,
     myPage: MYPAGE,

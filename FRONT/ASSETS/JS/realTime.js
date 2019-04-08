@@ -25,7 +25,7 @@ const changeContent = async (e) => {
     console.log('hi')
     e.preventDefault();
     const target = e.target.innerHTML;
-
+    console.log(target)
     switch (target) {
         case `Profile` :
         await fetchHtml(`http://localhost:3000/myPage/edit-profile`);
