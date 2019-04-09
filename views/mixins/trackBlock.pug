@@ -1,0 +1,7 @@
+mixin trackBlock(track)
+    .trackBlock
+        a(href=`${routes.songApi(track.id)}`)
+            i.fas.fa-play
+            img(src=track.imgUrl, alt="")
+            h3.carousel__element__artist=`${track.artist}`
+            h5.carousel__element__title=`${track.title}`

@@ -1,71 +1,205 @@
 
     
-    .header__wrapper {
+    // .header__wrapper {
+    //     width: 100%;
+    //     height: 3rem;
+    //     position: fixed;
+    //     margin-bottom: 5rem;
+    //     background-color:  #333333;
+    //     margin: 0 auto;
+    //     width: 100%;
+    //     display:grid;
+    //     grid-template-columns: repeat(3, 1fr);
+
+    //     .header__column {
+    //         display: flex;
+    //         flex-direction: row;
+    //         justify-content: center;
+    //         align-items: center;
+
+    //         &:first-child {
+    //             margin-left: 10rem;
+    //             background-color: #1C5542;  
+    //             left: 10rem;
+    //             width: 12.5rem;
+                
+    //             i {
+    //                 color: white;
+    //                 font-size: 3rem;
+    //             }
+    //             p {
+    //                 margin-left: 0.5rem;
+    //                 display: block;
+    //                 font-size: 1rem;
+    //                 color: white;
+    //             }
+
+    //             }
+    //             &:nth-child(2){
+    //                 width: 100%;     
+    //                 justify-self: center;
+    
+    //                 form input{
+    //                     display: flex;
+    //                     padding: 0.3rem;
+    //                     width: 33rem;
+    //                     align-self: center;
+    //                     border-radius: .2rem;
+    //                 }
+    //             }
+
+    //             &:last-child {
+    //                 right: 0;
+    //                 justify-self: center;
+
+    //                 li {
+    //                     float: left;
+    //                     display: block;
+    //                     margin-right: 2rem;
+    //                     margin-left: 1rem;
+                        
+    //                     a {
+    //                         font-size: 1rem;
+    //                         display: block;
+    //                         color: white;
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //     }
+
+.header {
+    width: 100%;
+    height: 3rem;
+    background: #333333;
+
+    &__wrapper {
         width: 100%;
-        height: 3rem;
-        position: fixed;
-        margin-bottom: 5rem;
-        background-color:  #333333;
-        margin: 0 auto;
-        width: 100%;
-        display:grid;
+        height: 100%;
+        display: grid;
         grid-template-columns: repeat(3, 1fr);
 
         .header__column {
+            margin: 0 auto;
             display: flex;
-            flex-direction: row;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
             &:first-child {
-                margin-left: 10rem;
-                background-color: #1C5542;  
-                left: 10rem;
-                width: 12.5rem;
+                width: 40rem;
+                display: flex;
+                align-items: center;
+                position: relative;
                 
-                i {
-                    color: white;
-                    font-size: 3rem;
-                }
-                p {
-                    margin-left: 0.5rem;
-                    display: block;
-                    font-size: 1rem;
-                    color: white;
-                }
+                .logo__container{
 
-                }
-                &:nth-child(2){
-                    width: 100%;     
-                    justify-self: center;
-    
-                    form input{
-                        display: flex;
-                        padding: 0.3rem;
-                        width: 33rem;
-                        align-self: center;
-                        border-radius: .2rem;
+                    position: relative;
+                    right: 10%;
+                    width: 12rem;
+                    height: 100%;
+                    background: #f65368;
+                    color: white;
+
+                    i {
+                        position: relative;
+                        top: 25%;
+                        left: 12%;
+                        display: block;
+                        float: left;
+                        font-size: 1.3rem;
+                    }
+                    p {
+                        position: relative;
+                        top: 30%;
+                        left: 19%;
+                        font-weight: bold;
+                        
                     }
                 }
+              
+            }
 
-                &:last-child {
-                    right: 0;
-                    justify-self: center;
+            &:nth-child(2) {
+                width: 100%;
 
-                    li {
-                        float: left;
+                input {
+                    width: 30rem;
+                    height: 2rem;
+                    padding-left: 1rem;
+                    border-radius: .3rem;
+                }
+            }
+
+            &:nth-child(3){
+                width: 15rem;
+
+                    li{
+                        color: white;
                         display: block;
-                        margin-right: 2rem;
-                        margin-left: 1rem;
+                        float: left;
                         
-                        a {
-                            font-size: 1rem;
-                            display: block;
-                            color: white;
+                        // &::after {
+                        //     display: inline-block;
+                        //     z-index: 1;
+                        //     content: "";
+                        //     width: 2px;
+                        //     color: #333333;
+                        //     position: absolute;
+                        //     top: 2.5rem;
+                        //     left: 2rem;
+                        //     border-bottom: .05rem solid lighten( #333333, 60% );
+                        // }
+
+                        &:first-child {
+                            margin-right: 1.3rem;
+
+                        }
+                        &:last-child{
+                            margin-left: 1rem;
                         }
                     }
-                }
+                
+            }
+        }
+    }
+}
+
+.search-result {
+    // ul.search-result
+    z-index: 5;
+    background: #333333;
+    width: 30rem;
+    position: absolute;
+    top: 3rem;
+    // left: 40%;
+
+    li{
+        // display: inline-block;
+        color: white;
+        width: 100%;
+        height: 2rem;
+        // margin: 1rem;
+        cursor: pointer;
+        position: relative;
+
+        a {
+            margin-left: 1rem;
+            position: relative;
+            top: .5rem;
+            display: block;
+            font-weight: 200;
+            font-size: .8rem;
+
+            i {
+                margin-right: .7rem;
             }
 
         }
 
+        &:hover {
+            background: lighten(#333333, 20%);
+        }
+    }
+    
+}

@@ -1,16 +1,16 @@
-
 let playBtn = document.getElementById("audio-player__btn--play"),
-        volumeBtn = document.getElementById("audio-player__btn--volume"),
-        repeatBtn = document.getElementById("audio-player__btn--repeat"),
-        volumeProgressBar = document.getElementById("volume-progressBar"),
-        audio = document.getElementById("audio"),
-        progressBar = document.getElementById("progressBar"),
-        currentTime = document.querySelector(".currentTime"),
-        totalTime = document.querySelector(".totalTime"),
-        playMain = document.querySelectorAll(".playMain"),
-        footer = document.getElementsByTagName("footer"),
-        seeking = false,
-        seekingV = false;
+    volumeBtn = document.getElementById("audio-player__btn--volume"),
+    repeatBtn = document.getElementById("audio-player__btn--repeat"),
+    volumeProgressBar = document.getElementById("volume-progressBar"),
+    audio = document.getElementById("audio"),
+    progressBar = document.getElementById("progressBar"),
+    currentTime = document.querySelector(".currentTime"),
+    totalTime = document.querySelector(".totalTime"),
+    playMain = document.querySelectorAll(".playMain"),
+    playSearch = document.querySelector(".playSearch"),
+    footer = document.getElementsByTagName("footer"),
+    seeking = false,
+    seekingV = false;
 
 
 
@@ -170,23 +170,61 @@ const handelMainPlay = async (e) => {
             seekingV = false;
 
             audio.load()
-            init();
+            initinit();
             console.log(audio)
         })
-    // console.log(response.url)
-
-    // fetchHtml()
-
-
-
 
 }
 
-const init = () => {
+const handelSearchPlay = async (e) => {
+    console.log("hi")
+    e.preventDefault();
+    const currentHref = window.location.href.split("=")[1]
+    await fetch(`${e.target.parentNode.href}`, {method: "GET"})
+    // 업데이트 된 데이터베이스의 내용을 반영하기 위해선 아래의 페이지를 리로드 해야하기 때문에 새롭게 get요청을 보내는 것이다.
+    await fetch(`http://localhost:3000/search?search=${currentHref}`, {method: "GET"})
+        .then(res => {
+            return res.text()
+        }).then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            footer[0].innerHTML = doc.getElementsByTagName("footer")[0].innerHTML
+
+            {
+
+                playBtn = document.getElementById("audio-player__btn--play"),
+                volumeBtn = document.getElementById("audio-player__btn--volume"),
+                repeatBtn = document.getElementById("audio-player__btn--repeat"),
+                volumeProgressBar = document.getElementById("volume-progressBar"),
+                audio = document.getElementById("audio"),
+                progressBar = document.getElementById("progressBar"),
+                currentTime = document.querySelector(".currentTime"),
+                totalTime = document.querySelector(".totalTime"),
+                seeking = false,
+                seekingV = false;
+            }
+
+            audio.load()
+            initinit();
+        })
+}
+
+const initinit = () => {
+    console.log(playSearch);
+    for(const btn of playMain)
+        btn.addEventListener("click", handelMainPlay);
     
-    for(const btn of playMain){
-        btn.addEventListener("click", handelMainPlay)
+    if(playSearch && (playSearch.length > 1)){
+        console.log("1>")
+        for(const btn of playSearch) {
+            btn.addEventListener("click", handelSearchPlay);
+        }
+    } else if(playSearch && (playSearch.length !== 1)) {
+        console.log("===1")
+        playSearch.addEventListener("click", handelSearchPlay);
     }
+        
+    
 
     console.log(playBtn)
     playBtn.addEventListener("click", handlePlayClick)
@@ -213,6 +251,5 @@ const init = () => {
 
 
 
-if(playBtn) {
-    init();
-}
+if(document.getElementsByTagName("body")) initinit();
+

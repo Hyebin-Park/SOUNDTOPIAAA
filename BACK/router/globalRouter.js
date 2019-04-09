@@ -1,6 +1,8 @@
 import express from "express";
 import routes from "../routes";
+import searchBar from "../middleware";
 import Track from "../models/Track";
+import Artist from "../models/Artist";
 import User from "../models/User";
 import CP from "../models/currentPlay";
 import { makeDB, mockData } from "../mockData";
@@ -17,13 +19,18 @@ globalRouter.get(routes.home, (req, res) => {
 })
 
 globalRouter.get(routes.search, async (req, res) => {
+    
     const {
         query: { search }
     } = req;
     
     try{
+    
         const cp = await CP.find({}).populate("currentPlay");
-        res.render("searchResult", { search, cp })
+        const track = await Track.find({title: { $regex: search, $options: "i" }})
+        const artist = await Artist.find({name: { $regex: search, $options: "i" }})
+
+        res.render("searchResult", { search, cp, track, artist })
     } catch(error){
         console.log(error)
     }
@@ -74,6 +81,55 @@ globalRouter.get(routes.songApi(), async (req, res) => {
         res.end();
     }
 })
+
+globalRouter.get(routes.searchSongApi(), async (req, res) => {
+    const {
+        params : { id }
+    } = req;
+
+    try{
+        const selectedTrack = await Track.findById(id)
+        console.log(selectedTrack)
+        await CP.deleteOne()
+        const cp = await new CP({
+            currentPlay: selectedTrack.id
+        })
+        cp.save();
+        // res.redirect(routes.search)
+    } catch(error){
+        console.log(error)
+    }finally {
+        res.end();
+    }
+
+})
+
+
+globalRouter.get(routes.searchBarApi, async (req, res) => {
+    // const {
+    //     params: {id}
+    // } = req
+
+    // try {
+    //     const S_artist = await Artist.find().limit(10);
+    // }
+
+    const S_artist = await Artist.find({})
+    const S_track = await Track.find({})
+    // const SA_result = [];
+    // const ST_result = [];
+
+    // for(const object of S_artist) SA_result.push(object);
+    // for(const object of S_track) ST_result.push(object);
+    
+    // console.log(SA_result);
+    try{
+        res.send({S_artist, S_track})
+        // res.send(S_track)
+    } catch(error){
+        console.log(error)
+    }
+}) 
 
 
 export default globalRouter;

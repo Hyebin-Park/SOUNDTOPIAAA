@@ -1,14 +1,18 @@
 header.header
     div.header__wrapper
         div.header__column
-            i.fab.fa-soundcloud
-            p SOUNDTOPIA
+            .logo__container
+                i.fab.fa-soundcloud
+                p SOUNDTOPIA
+                //- stream, library 여유있으면 추가
         div.header__column
             form(action=routes.search, method="get")
-                input(type="text", placeholder="Search by artists, tracks", name="search")
+                input#search-input(type="text", placeholder="Search by artists, tracks", name="search")
+            ul.search-result
         div.header__column
             ul
                 li
                     a#goToUserDetail(href=`${routes.myPage}`) My Page
                 li
                     a(href=`${routes.signOut}`) Sign Out
+

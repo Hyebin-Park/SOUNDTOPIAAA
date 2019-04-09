@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const ArtistSchema = mongoose.Schema({
     name: String,
+    imgUrl:String,
     description : String,
     track:[
         {

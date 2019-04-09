@@ -1,4 +1,5 @@
 extends layout/base
+include mixins/trackBlock
 
 block content
     main#main
@@ -10,3 +11,23 @@ block content
                 li.search__nav--artist Artist
                 li.search__nav--tracks Tracks
         section.search__result
+            .result__container
+                if artist[0]
+                    each eachArtist in artist
+                        .artist__container
+                            a(href=`${routes.artist(eachArtist.name)}`)
+                                h3.artist=`${eachArtist.name}`
+                                img(src=eachArtist.imgUrl, alt=`${eachArtist.name}`) 
+                if track[0]
+                    each eachTrack in track
+                        .track__container
+                            a(href=routes.searchSongApi(`${eachTrack.id}`))  
+                                i.fas.fa-play.playSearch
+                            img(src=track[0].imgUrl, alt=`${eachTrack.title}`)
+                            h3.artist=`${eachTrack.artist}`
+                            h5.title=`${eachTrack.title}`
+                if !artist[0] && !track[0]
+                    .nothing__container
+                        i.fas.fa-search
+                        p Sorry we didn't find any results for “#{search}”.
+                        p Check the spelling, or try a different search.

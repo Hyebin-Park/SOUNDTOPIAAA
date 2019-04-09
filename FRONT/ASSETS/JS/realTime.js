@@ -3,7 +3,10 @@
 const MyPage = document.getElementById("goToUserDetail");
 
 const main = document.getElementById("main");
-const userContent = document.querySelector(".user__content")
+const userContent = document.querySelector(".user__content");
+
+const input = document.getElementById("search-input");
+const searchResult = document.querySelector(".search-result");
 
 const fetchHtml = (url) => {
     fetch(`${url}`)
@@ -50,7 +53,16 @@ const goToUserDetail = async (e) =>  {
 
 }
 
-
+const getSearchResult = async (e) => {
+    const value = e.target.value
+    console.log(e.keyCode)
+    if(e.keyCode === 13){
+        e.preventDefault();
+        console.log("prevent")
+        await fetch(`/search?search=${value}`)
+            .then(res => console.log(res))
+    }
+}
 
 window.onload = () => {
     // console.log(userNav)
@@ -65,5 +77,6 @@ window.onload = () => {
 
     }
 
+    input.addEventListener("keydown", getSearchResult)
     
 }
