@@ -1,0 +1,22 @@
+extends layout/base
+
+block content
+    main#main
+        section.artist__container
+            .artist__rows.artist__header
+                .artist__photo-container
+                    img.artist__photo--back(src="https://artwork-cdn.7static.com/static/img/sleeveart/00/051/614/0005161476_350.jpg")
+                    img.artist__photo--front(src="http://i.pravatar.cc/500?img=7")
+                h1.artist__name=`${artist[0].name}`
+            .artist__rows.artist__nav
+                ul#artist__nav
+                    li.artist__track
+                        a(href=routes.artistTrack) Track
+                    li.artist__followers
+                        a(href=routes.followers) Followers
+            .artist__rows.artist__content
+                p later, i'm gonna link this with artist.likes
+                if what === "followers"
+                    include ./followers
+                if what === "track"
+                    include ./tracks

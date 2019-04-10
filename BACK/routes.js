@@ -58,6 +58,7 @@ const routes = {
             return SEARCH_SONG_API
         }
     },
+
     // searchBarApi : term => {
     //     if(term){
     //         return `/api/${term}/search`
@@ -66,6 +67,7 @@ const routes = {
     //     }
     // }
     searchBarApi : SEARCHBAR_API
+ 
 };
 
 export default routes;

@@ -137,46 +137,51 @@ input, button {
     outline: none; }
 
 body {
-  background-color: #F2F2F2; }
+  position: relative;
+  background-color: #F2F2F2;
+  z-index: -10; }
 
 .container {
   position: relative;
   width: 100vw;
-  height: 100vh; }
+  height: 100%; }
 
 .header {
-  position: absolute;
-  top: 0; }
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  z-index: 10; }
 
 main {
-  width: 80%;
-  height: 90%;
   position: relative;
+  height: 100vh;
   top: 3rem;
-  margin: 0 auto; }
+  display: flex;
+  justify-content: center; }
 
 .header {
   width: 100%;
   height: 3rem;
-  background: #333333; }
+  background: #333333;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
   .header__wrapper {
-    width: 100%;
+    width: 75%;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr); }
     .header__wrapper .header__column {
-      margin: 0 auto;
       display: flex;
-      align-items: center;
-      justify-content: center; }
+      align-items: center; }
       .header__wrapper .header__column:first-child {
-        width: 40rem;
+        position: relative;
+        left: 0;
         display: flex;
         align-items: center;
         position: relative; }
         .header__wrapper .header__column:first-child .logo__container {
           position: relative;
-          right: 10%;
           width: 12rem;
           height: 100%;
           background: #f65368;
@@ -196,20 +201,26 @@ main {
       .header__wrapper .header__column:nth-child(2) {
         width: 100%; }
         .header__wrapper .header__column:nth-child(2) input {
-          width: 30rem;
+          width: 25rem;
           height: 2rem;
           padding-left: 1rem;
           border-radius: .3rem; }
       .header__wrapper .header__column:nth-child(3) {
-        width: 15rem; }
-        .header__wrapper .header__column:nth-child(3) li {
-          color: white;
-          display: block;
-          float: left; }
-          .header__wrapper .header__column:nth-child(3) li:first-child {
-            margin-right: 1.3rem; }
-          .header__wrapper .header__column:nth-child(3) li:last-child {
-            margin-left: 1rem; }
+        position: relative;
+        right: 0;
+        width: 15rem;
+        display: flex; }
+        .header__wrapper .header__column:nth-child(3) ul {
+          position: relative;
+          left: 10%; }
+          .header__wrapper .header__column:nth-child(3) ul li {
+            color: white;
+            display: block;
+            float: left; }
+            .header__wrapper .header__column:nth-child(3) ul li:first-child {
+              margin-right: 1.3rem; }
+            .header__wrapper .header__column:nth-child(3) ul li:last-child {
+              margin-left: 1rem; }
 
 .search-result {
   z-index: 5;
@@ -341,6 +352,171 @@ main {
   .carousel__btn--next {
     top: 50%;
     right: 13%; }
+
+.search__container {
+  background: white;
+  width: 75%;
+  min-height: 100%;
+  position: relative; }
+  .search__container .search__header {
+    position: fixed;
+    z-index: 5;
+    background: white;
+    width: 75%;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    border-width: 70%;
+    border-bottom: 0.05rem solid #cccccc; }
+    .search__container .search__header h1 {
+      margin-left: 2rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      display: block; }
+  .search__container .search__nav {
+    z-index: 25;
+    position: fixed;
+    border-bottom: 0.05rem solid #cccccc;
+    width: 15%;
+    height: 15rem; }
+    .search__container .search__nav ul {
+      transform: translateX(3rem) translateY(6.5rem); }
+      .search__container .search__nav ul li {
+        cursor: pointer;
+        font-size: .9rem;
+        margin-bottom: 1rem;
+        color: #333333; }
+        .search__container .search__nav ul li i {
+          margin-right: 1rem; }
+  .search__container .search__result {
+    width: 100%;
+    display: flex;
+    justify-content: center; }
+    .search__container .search__result .result__container {
+      position: absolute;
+      top: 15%;
+      left: 30%;
+      width: 30rem; }
+      .search__container .search__result .result__container .artist__container {
+        position: relative;
+        width: 100%;
+        height: 15rem; }
+        .search__container .search__result .result__container .artist__container .artist {
+          position: absolute;
+          top: 9%;
+          left: 40%;
+          display: inline-block;
+          font-size: 1rem;
+          font-weight: 500; }
+        .search__container .search__result .result__container .artist__container .img__container {
+          width: 10rem;
+          height: 10rem;
+          background: #f65368;
+          border-radius: 50%; }
+          .search__container .search__result .result__container .artist__container .img__container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; }
+      .search__container .search__result .result__container .track__container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 5rem; }
+        .search__container .search__result .result__container .track__container img {
+          width: 10rem;
+          height: 10rem; }
+        .search__container .search__result .result__container .track__container i {
+          font-size: 2rem;
+          color: #f65368;
+          position: absolute;
+          top: 5%;
+          left: 38%;
+          display: inline-block; }
+        .search__container .search__result .result__container .track__container .artist {
+          position: absolute;
+          top: 5%;
+          left: 48%;
+          display: inline-block;
+          font-size: .8rem;
+          font-weight: 500; }
+        .search__container .search__result .result__container .track__container .title {
+          position: absolute;
+          top: 15%;
+          left: 48%;
+          display: inline-block;
+          font-weight: 500; }
+
+.artist__container {
+  position: relative;
+  background: white;
+  width: 75%;
+  height: 100%;
+  margin: 0 auto; }
+  .artist__container .artist__header {
+    position: relative;
+    width: 100%;
+    height: 16rem; }
+    .artist__container .artist__header .artist__photo--back {
+      position: relative;
+      width: 100%;
+      height: 16rem; }
+    .artist__container .artist__header .artist__photo--front {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.8rem;
+      width: 13rem;
+      height: 13rem;
+      border-radius: 50%; }
+    .artist__container .artist__header .artist__name {
+      position: absolute;
+      top: 4rem;
+      left: 18rem;
+      z-index: 1;
+      font-size: 2rem;
+      text-align: center;
+      display: inline-block;
+      background: black;
+      color: white; }
+  .artist__container .artist__nav {
+    background: white;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center; }
+    .artist__container .artist__nav ul {
+      position: relative;
+      width: 97%; }
+      .artist__container .artist__nav ul li {
+        float: left;
+        display: block; }
+        .artist__container .artist__nav ul li a {
+          position: relative;
+          font-size: 1.5rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          text-align: center;
+          color: #333333;
+          margin-left: 3rem;
+          display: inline-block; }
+          .artist__container .artist__nav ul li a:hover::after {
+            text-align: center;
+            content: '';
+            display: block;
+            width: 100%;
+            z-index: 10;
+            position: absolute;
+            top: 2.5rem;
+            margin-right: 1.5rem;
+            border-bottom: .1rem solid #333333; }
+      .artist__container .artist__nav ul::after {
+        display: block;
+        z-index: 5;
+        content: "";
+        width: 98%;
+        color: #333333;
+        position: absolute;
+        top: 2.5rem;
+        left: 2rem;
+        border-bottom: 0.1rem solid #cccccc; }
 
 .home-header {
   display: block;

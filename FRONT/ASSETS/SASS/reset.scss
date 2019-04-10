@@ -142,25 +142,33 @@ input,button {
   } 
 
   body {
+    position: relative;
     background-color: $grey;
+    z-index: -10;
   }
 
   .container{
     position: relative;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+
+
   }
 
   .header {
-    position: absolute;
+    z-index: 10;
+    position: fixed;
     top:0;
+    z-index: 10;
+
   }
   main {
-    width: 80%;
-    height: 90%;
     position: relative;
+    height: 100vh;
     top:3rem;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    // background: green;
     
     
   }

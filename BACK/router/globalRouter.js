@@ -106,30 +106,25 @@ globalRouter.get(routes.searchSongApi(), async (req, res) => {
 
 
 globalRouter.get(routes.searchBarApi, async (req, res) => {
-    // const {
-    //     params: {id}
-    // } = req
-
-    // try {
-    //     const S_artist = await Artist.find().limit(10);
-    // }
-
+ 
     const S_artist = await Artist.find({})
     const S_track = await Track.find({})
-    // const SA_result = [];
-    // const ST_result = [];
-
-    // for(const object of S_artist) SA_result.push(object);
-    // for(const object of S_track) ST_result.push(object);
-    
-    // console.log(SA_result);
+  
     try{
         res.send({S_artist, S_track})
-        // res.send(S_track)
+
     } catch(error){
         console.log(error)
     }
 }) 
 
-
+globalRouter.get(routes.artist(), async (req, res) => {
+    const {
+        params : {name}
+    } = req;
+    const cp = await CP.find({}).populate("currentPlay");
+    const artist = await Artist.find({name: name});
+    console.log(artist)
+    res.render("artist", {artist, cp});
+})
 export default globalRouter;

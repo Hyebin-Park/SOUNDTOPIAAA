@@ -9,7 +9,7 @@ footer
                 i.fas.fa-redo-alt
         .audio-player__column.audio-player__wrapper
             span.currentTime 0:00
-            if cp[0]
+            if cp && cp[0]
                 audio#audio(src=`${cp[0].currentPlay.trackUrl}` type="audio/mp3")
             else
                 audio#audio(type="audio/mp3")
@@ -17,12 +17,12 @@ footer
                 progress#progressBar(value="0", max="100")
             span.totalTime 0:00
         .audio-player__column
-            if cp[0]
+            if cp && cp[0]
                 img.audio-player__album-cover(src=`${cp[0].currentPlay.imgUrl}`, alt="")
             else
                 img.audio-player__album-cover(src="MEDIA/tomorrow.jpg", alt="")
             .audio-player__info
-                if cp[0]
+                if cp && cp[0]
                     span.audio-player__info--artist
                         a(href=`${routes.artist}`) #{cp[0].currentPlay.artist}
                     span.audio-player__info--title #{cp[0].currentPlay.title}
