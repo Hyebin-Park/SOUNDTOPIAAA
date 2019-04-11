@@ -30,8 +30,8 @@ block content
                     if track[0]
                         each eachTrack in track
                             .track__container
-                                a(href=routes.searchSongApi(`${eachTrack.id}`))  
-                                    i.far.fa-play-circle
+                                a(href=routes.searchSongApi(`${eachTrack.id}`))
+                                    i.far.fa-play-circle.playSearch
                                 img(src=track[0].imgUrl, alt=`${eachTrack.title}`)
                                 h3.artist=`${eachTrack.artist}`
                                 h5.title=`${eachTrack.title}`

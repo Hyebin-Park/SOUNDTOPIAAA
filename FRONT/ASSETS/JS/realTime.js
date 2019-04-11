@@ -1,6 +1,7 @@
 // import routes from "../../../BACK/routes"
 
 const MyPage = document.getElementById("goToUserDetail");
+const artistContainer = document.querySelectorAll(".artist__container");
 
 const main = document.getElementById("main");
 const userContent = document.querySelector(".user__content");
@@ -12,6 +13,7 @@ const searchResult = document.querySelector(".search-result");
 const fetchHtml = (url) => {
     fetch(`${url}`)
         .then((response) => {
+            console.log(response)
             return response.text();
         }).then((html) => {
             const parser = new DOMParser();
@@ -51,11 +53,16 @@ const goToUserDetail = async (e) =>  {
     console.log("possible")
 
     const path = e.target.href;
-    await fetchHtml(`http://localhost:3000/myPage`)
-    
-  
-        
+    history.pushState({path}, null, path)
+    await fetchHtml(`/myPage`)
+}
 
+const goToArtistPage = async (e) => {
+    e.preventDefault();
+    console.log("eww")
+    const path = e.currentTarget.children[0].href
+    history.pushState({path}, null, path)
+    await fetchHtml(path)
 }
 
 const getSearchResult = async (e) => {
@@ -63,8 +70,11 @@ const getSearchResult = async (e) => {
     console.log(e.keyCode)
     if(e.keyCode === 13){
         e.preventDefault();
-        console.log("prevent")
- 
+
+        const path = `/search?search=${value}`
+        history.pushState({path}, null, path)
+        
+
         await fetch(`/search?search=${value}`)
         .then((response) => {
             return response.text();
@@ -73,43 +83,31 @@ const getSearchResult = async (e) => {
             const doc = parser.parseFromString(html, "text/html");
             main.innerHTML = doc.getElementById("main").innerHTML;
             console.log(document.scripts[0].innerHTML)
-            // Object.defineProperty(document.scripts, 'length', {
-            //     writable: 'true'
-            // });
-            // Object.defineProperty(doc.scripts, 'length', {
-            //     writable: 'true'
-            // });
-
-            // // for(let i = 0; i<document.scripts.length; i++){
-            // // Array.prototype.shift.call(document.scripts)
-            //     // document.scripts.pop();
-                
-            // // }
-            // while(document.scripts[0]){
-            //     document.scripts[0].remove();
-            //     // document.scripts.add(doc.scripts[0])
-            // }
-            // document.scripts = doc.scripts
-            // console.log(document.scripts)
-
-            // for(const script of doc.scripts){
-            //     Array.prototype.push.call(script)
-            //     // document.scripts.push(script)
-            // }
-            // console.log(document.scripts)
-            // // document.scripts.concat(doc.scripts)
-            // const playSearch = document.querySelectorAll(".playSearch");
-            // console.log(document.scripts[0],doc.scripts[0])
             
         })
             
     }
 }
 
+
+const handleHistoryEntry = async (e) => {
+    await fetchHtml(window.location.href)
+}
+
 if(document.body) {
 
     MyPage.addEventListener("click", goToUserDetail);
+    
+    if(artistContainer && (artistContainer.length > 1)){
+        for(const artist of artistContainer) {
+            console.log("bunch of artists")
+            artist.addEventListener("click", goToArtistPage);
+        }
+    } else if(artistContainer && (artistContainer.length === 1)) {
+        console.log("the one")
 
+        artistContainer[0].addEventListener("click", goToArtistPage);
+    }
 
     // 새로고침 된 페이지에서 작동하는 코드
     const userNav = document.getElementById("user__nav");
@@ -119,6 +117,8 @@ if(document.body) {
     }
 
     console.log(input)
-    input.addEventListener("keydown", getSearchResult)
+    input.addEventListener("keydown", getSearchResult);
+
+    window.addEventListener('popstate', handleHistoryEntry);
     
 }

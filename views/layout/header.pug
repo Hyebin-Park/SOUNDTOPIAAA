@@ -2,8 +2,9 @@ header.header
     div.header__wrapper
         div.header__column
             .logo__container
-                i.fab.fa-soundcloud
-                p SOUNDTOPIA
+                a(href=`${routes.main}`)
+                    i.fab.fa-soundcloud
+                    p SOUNDTOPIA
                 //- stream, library 여유있으면 추가
         div.header__column
             form(action=routes.search, method="get")

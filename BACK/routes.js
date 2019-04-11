@@ -39,7 +39,7 @@ const routes = {
     following: FOLLOWING,
     artist: name => {
         if(name) {
-            return `${name}`
+            return `/${name}`
         } else {
             return ARTIST
         }
